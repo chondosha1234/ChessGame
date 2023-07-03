@@ -7,6 +7,7 @@ import GameBoard.Spot;
  * Pieces.Piece abstract class to represent common functionality of all chess pieces
  */
 public abstract class Piece {
+
     private boolean killed = false;
     private boolean white = false;
 
@@ -31,4 +32,9 @@ public abstract class Piece {
     }
 
     public abstract boolean canMove(Board board, Spot start, Spot end);
+
+    // most pieces don't castle, King and rook can override
+    public boolean isCastlingMove(Spot start, Spot end) {
+        return false;
+    }
 }
