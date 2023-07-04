@@ -17,13 +17,57 @@ public class Bishop extends Piece {
             return false;
         }
 
-        int x = Math.abs(start.getX() - end.getX());
-        int y = Math.abs(start.getY() - end.getY());
+        int startX = start.getX();
+        int startY = start.getY();
+        int endX = end.getX();
+        int endY = end.getY();
+
+        int x = Math.abs(startX - endX);
+        int y = Math.abs(startY - endY);
 
         // must have difference in both x and y for a move.  must be an equal difference
         // 1 diagonal move is dx = 1, dy = 1,  2 diagonal spaces would be dx = 2,  dy = 2
-        // x / y == 1
+        if (x / y == 1) {
+            if (startX < endX && startY < endY) {
+                int i = startX + 1;
+                int j = startY + 1;
+                for (; i < endX && j < endY; i++, j++) {
+                    if (board.getBox(i, j).getPiece() != null) {
+                        return false;
+                    }
+                }
+            }
+            if (startX < endX && startY > endY) {
+                int i = startX + 1;
+                int j = startY - 1;
+                for (; i < endX && j > endY; i++, j--) {
+                    if (board.getBox(i, j).getPiece() != null) {
+                        return false;
+                    }
+                }
+            }
+            if (startX > endX && startY < endY) {
+                int i = startX - 1;
+                int j = startY + 1;
+                for (; i > endX && j < endY; i--, j++) {
+                    if (board.getBox(i, j).getPiece() != null) {
+                        return false;
+                    }
+                }
+            }
+            if (startX > endX && startY > endY) {
+                int i = startX - 1;
+                int j = startY - 1;
+                for (; i > endX && j > endY; i--, j--) {
+                    if (board.getBox(i, j).getPiece() != null) {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
 
-        return true;
+        // didn't meet valid move criteria
+        return false;
     }
 }

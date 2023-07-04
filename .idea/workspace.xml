@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aa76f95b-1e9a-4131-b4d4-66ca48f3ed26" name="Changes" comment="created game status enum and move class">
+    <list default="true" id="aa76f95b-1e9a-4131-b4d4-66ca48f3ed26" name="Changes" comment="started working on individual pieces classes">
       <change afterPath="$PROJECT_DIR$/src/main/java/Game/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ChessGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Game/ChessGame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Game.java" beforeDir="false" />
@@ -73,7 +73,14 @@
       <option name="project" value="LOCAL" />
       <updated>1688358953520</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="started working on individual pieces classes">
+      <created>1688412427037</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1688412427037</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -91,6 +98,7 @@
     <MESSAGE value="initial commit" />
     <MESSAGE value="created player class and human and computer sublcasses" />
     <MESSAGE value="created game status enum and move class" />
-    <option name="LAST_COMMIT_MESSAGE" value="created game status enum and move class" />
+    <MESSAGE value="started working on individual pieces classes" />
+    <option name="LAST_COMMIT_MESSAGE" value="started working on individual pieces classes" />
   </component>
 </project>
