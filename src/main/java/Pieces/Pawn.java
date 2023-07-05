@@ -19,18 +19,63 @@ public class Pawn extends Piece {
             return false;
         }
 
-        int x = Math.abs(start.getX() - end.getX());
-        int y = Math.abs(start.getY() - end.getY());
+        int startX = start.getX();
+        int startY = start.getY();
+        int endX = end.getX();
+        int endY = end.getY();
+
+        int x = startX - endX;
+        int y = Math.abs(startY - endY);
 
         // if difference of 1 in x and y means diagonal attack
         // check if that spot has enemy piece
+        if (x + y == 1) {
+            if (end.getPiece() != null) {
+                this.firstMove = false;
+                return true;
+            }
+        }
 
         //difference of 1 in x and 0 in y means a forward move of 1
+        // check if pawn has moved once and can possibly move 2 -- for White pieces
+        if (y == 0 && this.isWhite() && x == 2 && firstMove) {
+            if (board.getBox(startX + 1, endY).getPiece() != null) {
+                return false;
+            }
+            this.firstMove = false;
+            return true;
+        }
 
-        // check if pawn has moved once and can possibly move 2
+        // check if pawn has moved once and can possibly move 2 -- for Black pieces
+        if (y == 0 && !this.isWhite() && x == -2 && firstMove) {
+            if (board.getBox(startX - 1, endY).getPiece() != null) {
+                return false;
+            }
+            this.firstMove = false;
+            return true;
+        }
 
-        // can't move if enemy piece blocks
+        // one space move -- for white pieces
+        if (y == 0 && this.isWhite() && x == 1) {
+            if (end.getPiece() != null) {
+                return false;
+            }
+            this.firstMove = false;
+            return true;
+        }
 
-        return true;
+        // one space move -- for black pieces
+        if (y == 0 && !this.isWhite() && x == -1) {
+            if (end.getPiece() != null) {
+                return false;
+            }
+            this.firstMove = false;
+            return true;
+        }
+
+        // todo: check black and white piece orientation
+
+        // doesn't meet valid move criteria
+        return false;
     }
 }
