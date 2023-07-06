@@ -43,6 +43,14 @@ public class Game {
         return this.getStatus() != GameStatus.ACTIVE;
     }
 
+    public Board getBoard() {
+        return this.board;
+    }
+
+    public Player getCurrentTurn() {
+        return this.currentTurn;
+    }
+
     public GameStatus getStatus() {
         return this.status;
     }
