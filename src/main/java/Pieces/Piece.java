@@ -1,7 +1,7 @@
-package Pieces;
+package pieces;
 
-import GameBoard.Board;
-import GameBoard.Spot;
+import gameboard.Board;
+import gameboard.Spot;
 
 /**
  * Pieces.Piece abstract class to represent common functionality of all chess pieces
@@ -30,6 +30,8 @@ public abstract class Piece {
     public void setKilled(boolean killed) {
         this.killed = killed;
     }
+
+    public abstract String getImagePath();
 
     public abstract boolean canMove(Board board, Spot start, Spot end);
 
