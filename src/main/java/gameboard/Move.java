@@ -1,7 +1,7 @@
-package GameBoard;
+package gameboard;
 
-import Pieces.Piece;
-import Players.Player;
+import pieces.Piece;
+import players.Player;
 
 public class Move {
     private Player player;

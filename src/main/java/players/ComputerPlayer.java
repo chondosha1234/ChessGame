@@ -1,4 +1,4 @@
-package Players;
+package players;
 
 public class ComputerPlayer extends Player {
 

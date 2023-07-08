@@ -1,6 +1,6 @@
-package GameBoard;
+package gameboard;
 
-import Pieces.*;
+import pieces.*;
 
 /**
  * GameBoard.Board class represents the chess board

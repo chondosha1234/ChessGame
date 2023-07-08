@@ -1,6 +1,6 @@
-package GameBoard;
+package gameboard;
 
-import Pieces.Piece;
+import pieces.Piece;
 
 /**
  * GameBoard.Spot class represents a cell on the chess board

@@ -1,4 +1,4 @@
-package Players;
+package players;
 
 /**
  * An abstract class for player, can be human or computer
