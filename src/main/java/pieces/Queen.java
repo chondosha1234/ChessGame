@@ -23,7 +23,7 @@ public class Queen extends Piece {
     public boolean canMove(Board board, Spot start, Spot end) {
 
         // can't move to spot with piece of same color
-        if (end.getPiece().isWhite() == this.isWhite()) {
+        if (end.getPiece() != null && end.getPiece().isWhite() == this.isWhite()) {
             return false;
         }
 

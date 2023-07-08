@@ -26,7 +26,7 @@ public class Rook extends Piece {
         // todo: check to make sure its not same spot?
 
         // can't move to spot with piece of same color
-        if (end.getPiece().isWhite() == this.isWhite()) {
+        if (end.getPiece() != null && end.getPiece().isWhite() == this.isWhite()) {
             return false;
         }
 
