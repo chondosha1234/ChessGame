@@ -1,12 +1,23 @@
-package Pieces;
+package pieces;
 
-import GameBoard.Board;
-import GameBoard.Spot;
+import gameboard.Board;
+import gameboard.Spot;
 
 public class Queen extends Piece {
 
+    private String imagePath;
+
     public Queen (boolean white) {
         super(white);
+        if (white) {
+            this.imagePath = "resources/chess_pieces/queen_white.png";
+        } else {
+            this.imagePath = "resources/chess_pieces/queen_black.png";
+        }
+    }
+
+    public String getImagePath() {
+        return this.imagePath;
     }
 
     public boolean canMove(Board board, Spot start, Spot end) {

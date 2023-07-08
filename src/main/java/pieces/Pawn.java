@@ -1,14 +1,24 @@
-package Pieces;
+package pieces;
 
-import GameBoard.Board;
-import GameBoard.Spot;
+import gameboard.Board;
+import gameboard.Spot;
 
 public class Pawn extends Piece {
 
     private boolean firstMove = true;
+    private String imagePath;
 
     public Pawn(boolean white) {
         super(white);
+        if (white) {
+            this.imagePath = "resources/chess_pieces/pawn_white.png";
+        } else {
+            this.imagePath = "resources/chess_pieces/pawn_black.png";
+        }
+    }
+
+    public String getImagePath() {
+        return this.imagePath;
     }
 
     @Override

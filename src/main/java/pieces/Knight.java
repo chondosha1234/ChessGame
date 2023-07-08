@@ -1,12 +1,23 @@
-package Pieces;
+package pieces;
 
-import GameBoard.Board;
-import GameBoard.Spot;
+import gameboard.Board;
+import gameboard.Spot;
 
 public class Knight extends Piece {
 
+    private String imagePath;
+
     public Knight(boolean white) {
         super(white);
+        if (white) {
+            this.imagePath = "resources/chess_pieces/knight_white.png";
+        } else {
+            this.imagePath = "resources/chess_pieces/knight_black.png";
+        }
+    }
+
+    public String getImagePath() {
+        return this.imagePath;
     }
 
     @Override

@@ -1,14 +1,24 @@
-package Pieces;
+package pieces;
 
-import GameBoard.Board;
-import GameBoard.Spot;
+import gameboard.Board;
+import gameboard.Spot;
 
 public class King extends Piece {
 
     private boolean castlingDone = false;
+    private String imagePath;
 
     public King(boolean white) {
         super(white);
+        if (white) {
+            this.imagePath = "resources/chess_pieces/king_white.png";
+        } else {
+            this.imagePath = "resources/chess_pieces/king_black.png";
+        }
+    }
+
+    public String getImagePath() {
+        return this.imagePath;
     }
 
     public boolean isCastlingDone() {
