@@ -10,9 +10,9 @@ public class Queen extends Piece {
     public Queen (boolean white) {
         super(white);
         if (white) {
-            this.imagePath = "resources/chess_pieces/queen_white.png";
+            this.imagePath = "src/main/resources/chess_pieces/queen_white.png";
         } else {
-            this.imagePath = "resources/chess_pieces/queen_black.png";
+            this.imagePath = "src/main/resources/chess_pieces/queen_black.png";
         }
     }
 

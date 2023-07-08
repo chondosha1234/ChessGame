@@ -10,9 +10,9 @@ public class Bishop extends Piece {
     public Bishop(boolean white) {
         super(white);
         if (white) {
-            this.imagePath = "resources/chess_pieces/bishop_white.png";
+            this.imagePath = "src/main/resources/chess_pieces/bishop_white.png";
         } else {
-            this.imagePath = "resources/chess_pieces/bishop_black.png";
+            this.imagePath = "src/main/resources/chess_pieces/bishop_black.png";
         }
     }
 

@@ -10,9 +10,9 @@ public class Rook extends Piece {
     public Rook(boolean white) {
         super(white);
         if (white) {
-            this.imagePath = "resources/chess_pieces/rook_white.png";
+            this.imagePath = "src/main/resources/chess_pieces/rook_white.png";
         } else {
-            this.imagePath = "resources/chess_pieces/rook_black.png";
+            this.imagePath = "src/main/resources/chess_pieces/rook_black.png";
         }
     }
 
