@@ -24,6 +24,7 @@ public class Board {
     }
 
     public void resetBoard() {
+        boxes = new Spot[8][8];
         boxes[0][0] = new Spot(0, 0, new Rook(true));
         boxes[0][1] = new Spot(0, 1, new Knight(true));
         boxes[0][2] = new Spot(0, 2, new Bishop(true));

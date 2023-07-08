@@ -1,27 +1,34 @@
-package UI;
+package ui;
 
 import java.awt.*;
 import java.awt.event.*;
-import java.util.*;
 import javax.swing.*;
-import Game.Game;
+import game.Game;
+import gameboard.Spot;
+import pieces.Piece;
+import players.HumanPlayer;
+import players.Player;
 
 public class ChessGui extends JFrame implements MouseListener, MouseMotionListener {
-    private Game game;
+    private final Game game;
     private final JLayeredPane layeredPane;
     private final JPanel chessBoard;
     private JLabel chessPiece;
     private int xAdjustment;
     private int yAdjustment;
+    private final int squareSize;
+    private int xStart;
+    private int yStart;
 
     public ChessGui() {
         Dimension boardSize = new Dimension(600, 600);
+        squareSize = 600 / 8;
 
         layeredPane = new JLayeredPane();
         getContentPane().add(layeredPane);
         layeredPane.setPreferredSize(boardSize);
         layeredPane.addMouseListener(this);
-        layeredPane.addMouseListener(this);
+        layeredPane.addMouseMotionListener(this);
 
         // add chessboard to layout
         chessBoard = new JPanel();
@@ -30,6 +37,14 @@ public class ChessGui extends JFrame implements MouseListener, MouseMotionListen
         chessBoard.setPreferredSize(boardSize);
         chessBoard.setBounds(0, 0, boardSize.width, boardSize.height);
 
+        // Add pieces to board
+        Player p1 = new HumanPlayer(true);
+        Player p2 = new HumanPlayer(false);
+        game = new Game(p1, p2);
+        setChessBoard();
+    }
+
+    private void setChessBoard() {
         for (int i = 0; i < 64; i++) {
             JPanel square = new JPanel(new BorderLayout());
             chessBoard.add(square);
@@ -40,23 +55,35 @@ public class ChessGui extends JFrame implements MouseListener, MouseMotionListen
             } else {
                 square.setBackground(i % 2 == 0 ? Color.white : Color.blue);
             }
+
+            // add piece icon to square based on game state
+            int x = i % 8;
+            int y = i / 8;
+            Spot spot = game.getBoard().getBox(x, y);
+            Piece piece = spot.getPiece();
+            if (piece != null) {
+                // Add jLabel with image for piece
+                String imagePath = piece.getImagePath();
+                ImageIcon icon = new ImageIcon(imagePath);
+                JLabel pieceLabel = new JLabel(icon);
+                square.add(pieceLabel);
+            }
         }
-
-        // Add pieces to board
-        game = new Game();
-        initializeChessBoard();
-    }
-
-    private void initializeChessBoard() {
-
     }
 
     private void updateChessBoard() {
-
+        chessBoard.removeAll();
+        setChessBoard();
+        chessBoard.revalidate();
+        chessBoard.repaint();
     }
 
     // select piece
     public void mousePressed(MouseEvent e) {
+        this.xStart = e.getX() / squareSize;
+        this.yStart = e.getY() / squareSize;
+
+        /*
         chessPiece = null;
         Component c = chessBoard.findComponentAt(e.getX(), e.getY());
 
@@ -69,6 +96,7 @@ public class ChessGui extends JFrame implements MouseListener, MouseMotionListen
         chessPiece.setLocation(e.getX() + xAdjustment, e.getY() + yAdjustment);
         chessPiece.setSize(chessPiece.getWidth(), chessPiece.getHeight());
         layeredPane.add(chessPiece, JLayeredPane.DRAG_LAYER);
+        */
     }
 
     // Move piece around
@@ -78,6 +106,26 @@ public class ChessGui extends JFrame implements MouseListener, MouseMotionListen
     }
 
     public void mouseReleased(MouseEvent e) {
+        int x = e.getX() / squareSize;
+        int y = e.getY() / squareSize;
+
+        // get selected piece and position
+        Spot startSpot = game.getBoard().getBox(xStart, yStart);
+        Piece selectedPiece = startSpot.getPiece();
+
+        //get destination spot
+        Spot endSpot = game.getBoard().getBox(x, y);
+
+        boolean isValidMove = game.playerMove(game.getCurrentTurn(), xStart, yStart, x, y);
+        if (isValidMove) {
+            updateChessBoard();
+
+            if (game.isEnd()) {
+                // do something
+            }
+        }
+
+        /*
         if (chessPiece == null) return;
 
         chessPiece.setVisible(false);
@@ -92,6 +140,8 @@ public class ChessGui extends JFrame implements MouseListener, MouseMotionListen
         }
         parent.add(chessPiece);
         chessPiece.setVisible(true);
+
+         */
     }
 
     public void mouseClicked(MouseEvent e){}
