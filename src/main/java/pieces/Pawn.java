@@ -5,11 +5,12 @@ import gameboard.Spot;
 
 public class Pawn extends Piece {
 
-    private boolean firstMove = true;
+    private boolean firstMove;
     private String imagePath;
 
     public Pawn(boolean white) {
         super(white);
+        this.firstMove = true;
         if (white) {
             this.imagePath = "src/main/resources/chess_pieces/pawn_white.png";
         } else {
@@ -36,10 +37,19 @@ public class Pawn extends Piece {
 
         int x = startX - endX;
         int y = Math.abs(startY - endY);
+        System.out.println("pawn firstmove value: " + firstMove);
+        System.out.println("pawn move x and y: " + x + " " + y);
 
         // if difference of 1 in x and y means diagonal attack
         // check if that spot has enemy piece
-        if (x + y == 1) {
+        if (this.isWhite() && x == -1 && y == 1) {
+            if (end.getPiece() != null) {
+                this.firstMove = false;
+                return true;
+            }
+        }
+
+        if (!this.isWhite() && x == 1 && y == 1) {
             if (end.getPiece() != null) {
                 this.firstMove = false;
                 return true;
@@ -47,17 +57,8 @@ public class Pawn extends Piece {
         }
 
         //difference of 1 in x and 0 in y means a forward move of 1
-        // check if pawn has moved once and can possibly move 2 -- for White pieces
-        if (y == 0 && this.isWhite() && x == 2 && firstMove) {
-            if (board.getBox(startX + 1, endY).getPiece() != null) {
-                return false;
-            }
-            this.firstMove = false;
-            return true;
-        }
-
         // check if pawn has moved once and can possibly move 2 -- for Black pieces
-        if (y == 0 && !this.isWhite() && x == -2 && firstMove) {
+        if (y == 0 && !this.isWhite() && x == 2 && firstMove) {
             if (board.getBox(startX - 1, endY).getPiece() != null) {
                 return false;
             }
@@ -65,9 +66,9 @@ public class Pawn extends Piece {
             return true;
         }
 
-        // one space move -- for white pieces
-        if (y == 0 && this.isWhite() && x == 1) {
-            if (end.getPiece() != null) {
+        // check if pawn has moved once and can possibly move 2 -- for White pieces
+        if (y == 0 && this.isWhite() && x == -2 && firstMove) {
+            if (board.getBox(startX + 1, endY).getPiece() != null) {
                 return false;
             }
             this.firstMove = false;
@@ -75,7 +76,7 @@ public class Pawn extends Piece {
         }
 
         // one space move -- for black pieces
-        if (y == 0 && !this.isWhite() && x == -1) {
+        if (y == 0 && !this.isWhite() && x == 1) {
             if (end.getPiece() != null) {
                 return false;
             }
@@ -83,7 +84,14 @@ public class Pawn extends Piece {
             return true;
         }
 
-        // todo: check black and white piece orientation
+        // one space move -- for white pieces
+        if (y == 0 && this.isWhite() && x == -1) {
+            if (end.getPiece() != null) {
+                return false;
+            }
+            this.firstMove = false;
+            return true;
+        }
 
         // doesn't meet valid move criteria
         return false;
