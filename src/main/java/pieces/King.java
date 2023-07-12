@@ -6,7 +6,8 @@ import gameboard.Spot;
 public class King extends Piece {
 
     private boolean castlingDone = false;
-    private String imagePath;
+    private final String imagePath;
+    private Spot spot;
 
     public King(boolean white) {
         super(white);
@@ -40,6 +41,7 @@ public class King extends Piece {
         int y = Math.abs(start.getY() - end.getY());
         if (x + y == 1) {
             //check to make sure it will not result in king getting attacked
+            this.spot = end;
             return true;
         }
 

@@ -5,7 +5,7 @@ import gameboard.Spot;
 
 public class Bishop extends Piece {
 
-    private String imagePath;
+    private final String imagePath;
 
     public Bishop(boolean white) {
         super(white);

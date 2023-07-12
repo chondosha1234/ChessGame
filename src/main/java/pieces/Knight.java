@@ -5,7 +5,7 @@ import gameboard.Spot;
 
 public class Knight extends Piece {
 
-    private String imagePath;
+    private final String imagePath;
 
     public Knight(boolean white) {
         super(white);

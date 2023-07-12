@@ -5,7 +5,7 @@ import gameboard.Spot;
 
 public class Rook extends Piece {
 
-    private String imagePath;
+    private final String imagePath;
 
     public Rook(boolean white) {
         super(white);

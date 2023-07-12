@@ -6,7 +6,7 @@ import gameboard.Spot;
 public class Pawn extends Piece {
 
     private boolean firstMove;
-    private String imagePath;
+    private final String imagePath;
 
     public Pawn(boolean white) {
         super(white);
@@ -37,8 +37,6 @@ public class Pawn extends Piece {
 
         int x = startX - endX;
         int y = Math.abs(startY - endY);
-        System.out.println("pawn firstmove value: " + firstMove);
-        System.out.println("pawn move x and y: " + x + " " + y);
 
         // if difference of 1 in x and y means diagonal attack
         // check if that spot has enemy piece
