@@ -46,11 +46,11 @@ public class Board {
         boxes[7][0] = new Spot(7, 0, new Rook(false));
         boxes[7][1] = new Spot(7, 1, new Knight(false));
         boxes[7][2] = new Spot(7, 2, new Bishop(false));
-        boxes[7][3] = new Spot(0, 3, new Queen(false));
-        boxes[7][4] = new Spot(0, 4, new King(false));
-        boxes[7][5] = new Spot(0, 5, new Bishop(false));
-        boxes[7][6] = new Spot(0, 6, new Knight(false));
-        boxes[7][7] = new Spot(0, 7, new Rook(false));
+        boxes[7][3] = new Spot(7, 3, new Queen(false));
+        boxes[7][4] = new Spot(7, 4, new King(false));
+        boxes[7][5] = new Spot(7, 5, new Bishop(false));
+        boxes[7][6] = new Spot(7, 6, new Knight(false));
+        boxes[7][7] = new Spot(7, 7, new Rook(false));
 
         boxes[6][0] = new Spot(6, 0, new Pawn(false));
         boxes[6][1] = new Spot(6, 1, new Pawn(false));
