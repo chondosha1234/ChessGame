@@ -7,7 +7,6 @@ public class King extends Piece {
 
     private boolean castlingDone = false;
     private final String imagePath;
-    private Spot spot;
 
     public King(boolean white) {
         super(white);

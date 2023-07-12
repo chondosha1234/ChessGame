@@ -73,6 +73,7 @@ public class Queen extends Piece {
                     }
                 }
             }
+            this.spot = end;
             return true;
         }
 
@@ -110,6 +111,7 @@ public class Queen extends Piece {
                     }
                 }
             }
+            this.spot = end;
             return true;
         }
 

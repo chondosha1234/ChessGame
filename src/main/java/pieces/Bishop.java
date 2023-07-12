@@ -79,6 +79,7 @@ public class Bishop extends Piece {
                     }
                 }
             }
+            this.spot = end;
             return true;
         }
 

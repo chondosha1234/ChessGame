@@ -23,8 +23,6 @@ public class Rook extends Piece {
     @Override
     public boolean canMove(Board board, Spot start, Spot end) {
 
-        // todo: check to make sure its not same spot?
-
         // can't move to spot with piece of same color
         if (end.getPiece() != null && end.getPiece().isWhite() == this.isWhite()) {
             return false;
@@ -56,6 +54,7 @@ public class Rook extends Piece {
                         }
                     }
                 }
+                this.spot = end;
                 return true;
             } else {
                 //checking for blocking along x-axis
@@ -76,6 +75,7 @@ public class Rook extends Piece {
                         }
                     }
                 }
+                this.spot = end;
                 return true;
             }
         }

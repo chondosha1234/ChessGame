@@ -10,6 +10,7 @@ public abstract class Piece {
 
     private boolean killed = false;
     private boolean white = false;
+    Spot spot;
 
     public Piece(boolean white) {
         this.setWhite(white);
@@ -30,6 +31,12 @@ public abstract class Piece {
     public void setKilled(boolean killed) {
         this.killed = killed;
     }
+
+    public Spot getSpot() {
+        return this.spot;
+    }
+
+    public void setSpot(Spot spot) { this.spot = spot; }
 
     public abstract String getImagePath();
 

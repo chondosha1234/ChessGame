@@ -32,6 +32,13 @@ public class Knight extends Piece {
         // multiplying the difference of abs(2) and abs(1) will be 2 for a valid move
         int x = Math.abs(start.getX() - end.getX());
         int y = Math.abs(start.getY() - end.getY());
-        return x * y == 2;
+        boolean isValidMove = (x * y == 2);
+
+        if (isValidMove) {
+            this.spot = end;
+            return true;
+        } else {
+            return false;
+        }
     }
 }

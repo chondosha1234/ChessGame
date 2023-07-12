@@ -43,6 +43,7 @@ public class Pawn extends Piece {
         if (this.isWhite() && x == -1 && y == 1) {
             if (end.getPiece() != null) {
                 this.firstMove = false;
+                this.spot = end;
                 return true;
             }
         }
@@ -50,6 +51,7 @@ public class Pawn extends Piece {
         if (!this.isWhite() && x == 1 && y == 1) {
             if (end.getPiece() != null) {
                 this.firstMove = false;
+                this.spot = end;
                 return true;
             }
         }
@@ -61,6 +63,7 @@ public class Pawn extends Piece {
                 return false;
             }
             this.firstMove = false;
+            this.spot = end;
             return true;
         }
 
@@ -70,6 +73,7 @@ public class Pawn extends Piece {
                 return false;
             }
             this.firstMove = false;
+            this.spot = end;
             return true;
         }
 
@@ -79,6 +83,7 @@ public class Pawn extends Piece {
                 return false;
             }
             this.firstMove = false;
+            this.spot = end;
             return true;
         }
 
@@ -88,6 +93,7 @@ public class Pawn extends Piece {
                 return false;
             }
             this.firstMove = false;
+            this.spot = end;
             return true;
         }
 
