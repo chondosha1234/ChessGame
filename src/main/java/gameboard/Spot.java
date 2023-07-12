@@ -14,6 +14,9 @@ public class Spot {
         this.setPiece(piece);
         this.setX(x);
         this.setY(y);
+        if (piece != null) {
+            piece.setSpot(this);
+        }
     }
 
     public Piece getPiece() {
