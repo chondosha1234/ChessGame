@@ -1,11 +1,11 @@
-package Game;
+package game;
 
-import GameBoard.Board;
-import GameBoard.Move;
-import GameBoard.Spot;
-import Pieces.King;
-import Pieces.Piece;
-import Players.Player;
+import gameboard.Board;
+import gameboard.Move;
+import gameboard.Spot;
+import pieces.King;
+import pieces.Piece;
+import players.Player;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,11 +17,16 @@ public class Game {
     private Player currentTurn;
     private GameStatus status;
     private List<Move> movesPlayed;
+    private boolean whiteKingChecked;
+    private boolean blackKingChecked;
 
-    public Game() {
+    public Game(Player p1, Player p2) {
         this.players = new Player[2];
         this.board = new Board();
         this.movesPlayed = new ArrayList<>();
+        this.whiteKingChecked = false;
+        this.blackKingChecked = false;
+        this.initialize(p1, p2);
     }
 
     private void initialize(Player p1, Player p2) {
@@ -82,6 +87,7 @@ public class Game {
         if (sourcePiece.isWhite() != player.isWhiteSide()) {
             return false;
         }
+
         // check valid move
         if (!sourcePiece.canMove(board, move.getStart(), move.getEnd())) {
             return false;
@@ -105,6 +111,16 @@ public class Game {
         //move piece from start box to end box
         move.getEnd().setPiece(sourcePiece);
         move.getStart().setPiece(null);
+        // evaluate check condition for current player, if true revert move and return false
+        if (evaluateCurrentPlayerCheck()) {
+            // switch piece back
+            move.getStart().setPiece(sourcePiece);
+            move.getEnd().setPiece(null);
+            return false;
+        }
+
+        // see if current player put enemy in check after move has been completed
+        evaluateEnemyPlayerCheck();
 
         // game over condition
         if (destPiece instanceof King) {
@@ -123,5 +139,50 @@ public class Game {
         }
 
         return true;
+    }
+
+    public boolean evaluateCurrentPlayerCheck() {
+        if (this.currentTurn.isWhiteSide()) {
+            // white is moving and need to check if this will put own king into check
+            for (Piece blackPiece : board.getBlackPieces()) {
+                if (!blackPiece.isKilled() && blackPiece.canMove(board, blackPiece.getSpot(), board.getWhiteKing().getSpot())) {
+                    System.out.println("black piece and spot: " + blackPiece + " at " + blackPiece.getSpot());
+                    System.out.println("white king spot: " + board.getWhiteKing().getSpot());
+                    System.out.println("inside Check black piece can hit king");
+                    return true;
+                }
+            }
+        } else {
+            // black is moving
+            for (Piece whitePiece : board.getWhitePieces()) {
+                if (!whitePiece.isKilled() && whitePiece.canMove(board, whitePiece.getSpot(), board.getBlackKing().getSpot())) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public boolean evaluateRemoveCheck() {
+        // if current player is in check their move must prevent that, or cant move
+        return false;
+    }
+
+    public void evaluateEnemyPlayerCheck() {
+        if (this.currentTurn.isWhiteSide()) {
+            // white is moving,  check if you put enemy into check
+            for (Piece whitePiece : board.getWhitePieces()) {
+                if (!whitePiece.isKilled() && whitePiece.canMove(board, whitePiece.getSpot(), board.getBlackKing().getSpot())) {
+                    this.blackKingChecked = true;
+                }
+            }
+        } else {
+            // black is moving, check if you put enemy into check
+            for (Piece blackPiece : board.getBlackPieces()) {
+                if (!blackPiece.isKilled() && blackPiece.canMove(board, blackPiece.getSpot(), board.getWhiteKing().getSpot())) {
+                    this.whiteKingChecked = true;
+                }
+            }
+        }
     }
 }
