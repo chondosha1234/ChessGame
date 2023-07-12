@@ -38,6 +38,10 @@ public class Bishop extends Piece {
 
         // must have difference in both x and y for a move.  must be an equal difference
         // 1 diagonal move is dx = 1, dy = 1,  2 diagonal spaces would be dx = 2,  dy = 2
+        if (x == 0 || y == 0) {
+            return false;
+        }
+
         if (x / y == 1) {
             if (startX < endX && startY < endY) {
                 int i = startX + 1;
