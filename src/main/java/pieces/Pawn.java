@@ -35,12 +35,12 @@ public class Pawn extends Piece {
         int endX = end.getX();
         int endY = end.getY();
 
-        int x = startX - endX;
-        int y = Math.abs(startY - endY);
+        int x = Math.abs(startX - endX);
+        int y = startY - endY;
 
         // if difference of 1 in x and y means diagonal attack
         // check if that spot has enemy piece
-        if (this.isWhite() && x == -1 && y == 1) {
+        if (this.isWhite() && x == 1 && y == -1) {
             if (end.getPiece() != null) {
                 this.firstMove = false;
                 this.spot = end;
@@ -58,8 +58,8 @@ public class Pawn extends Piece {
 
         //difference of 1 in x and 0 in y means a forward move of 1
         // check if pawn has moved once and can possibly move 2 -- for Black pieces
-        if (y == 0 && !this.isWhite() && x == 2 && firstMove) {
-            if (board.getBox(startX - 1, endY).getPiece() != null) {
+        if (x == 0 && !this.isWhite() && y == 2 && firstMove) {
+            if (board.getBox(endX, startY - 1).getPiece() != null) {
                 return false;
             }
             this.firstMove = false;
@@ -68,8 +68,8 @@ public class Pawn extends Piece {
         }
 
         // check if pawn has moved once and can possibly move 2 -- for White pieces
-        if (y == 0 && this.isWhite() && x == -2 && firstMove) {
-            if (board.getBox(startX + 1, endY).getPiece() != null) {
+        if (x == 0 && this.isWhite() && y == -2 && firstMove) {
+            if (board.getBox(endX, startY + 1).getPiece() != null) {
                 return false;
             }
             this.firstMove = false;
@@ -78,7 +78,7 @@ public class Pawn extends Piece {
         }
 
         // one space move -- for black pieces
-        if (y == 0 && !this.isWhite() && x == 1) {
+        if (x == 0 && !this.isWhite() && y == 1) {
             if (end.getPiece() != null) {
                 return false;
             }
@@ -88,7 +88,7 @@ public class Pawn extends Piece {
         }
 
         // one space move -- for white pieces
-        if (y == 0 && this.isWhite() && x == -1) {
+        if (x == 0 && this.isWhite() && y == -1) {
             if (end.getPiece() != null) {
                 return false;
             }

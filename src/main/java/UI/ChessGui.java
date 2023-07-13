@@ -2,6 +2,8 @@ package ui;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.awt.image.BufferedImage;
+import java.util.logging.Logger;
 import javax.swing.*;
 import game.Game;
 import gameboard.Spot;
@@ -11,7 +13,6 @@ import players.Player;
 
 public class ChessGui extends JFrame implements MouseListener, MouseMotionListener {
     private final Game game;
-    private final JLayeredPane layeredPane;
     private final JPanel chessBoard;
     private JLabel chessPiece;
     private int xAdjustment;
@@ -24,7 +25,7 @@ public class ChessGui extends JFrame implements MouseListener, MouseMotionListen
         Dimension boardSize = new Dimension(600, 600);
         squareSize = 600 / 8;
 
-        layeredPane = new JLayeredPane();
+        JLayeredPane layeredPane = new JLayeredPane();
         getContentPane().add(layeredPane);
         layeredPane.setPreferredSize(boardSize);
         layeredPane.addMouseListener(this);
@@ -51,9 +52,9 @@ public class ChessGui extends JFrame implements MouseListener, MouseMotionListen
 
             int row = (i / 8) % 2;
             if (row == 0) {
-                square.setBackground(i % 2 == 0 ? Color.blue : Color.white);
+                square.setBackground(i % 2 == 0 ? Color.gray : Color.white);
             } else {
-                square.setBackground(i % 2 == 0 ? Color.white : Color.blue);
+                square.setBackground(i % 2 == 0 ? Color.white : Color.gray);
             }
 
             // add piece icon to square based on game state
@@ -115,6 +116,10 @@ public class ChessGui extends JFrame implements MouseListener, MouseMotionListen
 
         //get destination spot
         Spot endSpot = game.getBoard().getBox(x, y);
+
+        System.out.println("start spot : " + startSpot);
+        System.out.println("end spot : " + endSpot);
+        System.out.println("piece : " + selectedPiece);
 
         boolean isValidMove = game.playerMove(game.getCurrentTurn(), xStart, yStart, x, y);
         if (isValidMove) {

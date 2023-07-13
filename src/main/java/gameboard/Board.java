@@ -122,43 +122,43 @@ public class Board {
 
         boxes = new Spot[8][8];
         boxes[0][0] = new Spot(0, 0, whiteRook1);
-        boxes[0][1] = new Spot(0, 1, whiteKnight1);
-        boxes[0][2] = new Spot(0, 2, whiteBishop1);
-        boxes[0][3] = new Spot(0, 3, whiteQueen);
-        boxes[0][4] = new Spot(0, 4, whiteKing);
-        boxes[0][5] = new Spot(0, 5, whiteBishop2);
-        boxes[0][6] = new Spot(0, 6, whiteKnight2);
-        boxes[0][7] = new Spot(0, 7, whiteRook2);
+        boxes[1][0] = new Spot(1, 0, whiteKnight1);
+        boxes[2][0] = new Spot(2, 0, whiteBishop1);
+        boxes[3][0] = new Spot(3, 0, whiteQueen);
+        boxes[4][0] = new Spot(4, 0, whiteKing);
+        boxes[5][0] = new Spot(5, 0, whiteBishop2);
+        boxes[6][0] = new Spot(6, 0, whiteKnight2);
+        boxes[7][0] = new Spot(7, 0, whiteRook2);
 
-        boxes[1][0] = new Spot(1, 0, whitePawn1);
+        boxes[0][1] = new Spot(0, 1, whitePawn1);
         boxes[1][1] = new Spot(1, 1, whitePawn2);
-        boxes[1][2] = new Spot(1, 2, whitePawn3);
-        boxes[1][3] = new Spot(1, 3, whitePawn4);
-        boxes[1][4] = new Spot(1, 4, whitePawn5);
-        boxes[1][5] = new Spot(1, 5, whitePawn6);
-        boxes[1][6] = new Spot(1, 6, whitePawn7);
-        boxes[1][7] = new Spot(1, 7, whitePawn8);
+        boxes[2][1] = new Spot(2, 1, whitePawn3);
+        boxes[3][1] = new Spot(3, 1, whitePawn4);
+        boxes[4][1] = new Spot(4, 1, whitePawn5);
+        boxes[5][1] = new Spot(5, 1, whitePawn6);
+        boxes[6][1] = new Spot(6, 1, whitePawn7);
+        boxes[7][1] = new Spot(7, 1, whitePawn8);
 
-        boxes[7][0] = new Spot(7, 0, blackRook1);
-        boxes[7][1] = new Spot(7, 1, blackKnight1);
-        boxes[7][2] = new Spot(7, 2, blackBishop1);
-        boxes[7][3] = new Spot(7, 3, blackQueen);
-        boxes[7][4] = new Spot(7, 4, blackKing);
-        boxes[7][5] = new Spot(7, 5, blackBishop2);
-        boxes[7][6] = new Spot(7, 6, blackKnight2);
+        boxes[0][7] = new Spot(0, 7, blackRook1);
+        boxes[1][7] = new Spot(1, 7, blackKnight1);
+        boxes[2][7] = new Spot(2, 7, blackBishop1);
+        boxes[3][7] = new Spot(3, 7, blackQueen);
+        boxes[4][7] = new Spot(4, 7, blackKing);
+        boxes[5][7] = new Spot(5, 7, blackBishop2);
+        boxes[6][7] = new Spot(6, 7, blackKnight2);
         boxes[7][7] = new Spot(7, 7, blackRook2);
 
-        boxes[6][0] = new Spot(6, 0, blackPawn1);
-        boxes[6][1] = new Spot(6, 1, blackPawn2);
-        boxes[6][2] = new Spot(6, 2, blackPawn3);
-        boxes[6][3] = new Spot(6, 3, blackPawn4);
-        boxes[6][4] = new Spot(6, 4, blackPawn5);
-        boxes[6][5] = new Spot(6, 5, blackPawn6);
+        boxes[0][6] = new Spot(0, 6, blackPawn1);
+        boxes[1][6] = new Spot(1, 6, blackPawn2);
+        boxes[2][6] = new Spot(2, 6, blackPawn3);
+        boxes[3][6] = new Spot(3, 6, blackPawn4);
+        boxes[4][6] = new Spot(4, 6, blackPawn5);
+        boxes[5][6] = new Spot(5, 6, blackPawn6);
         boxes[6][6] = new Spot(6, 6, blackPawn7);
-        boxes[6][7] = new Spot(6, 7, blackPawn8);
+        boxes[7][6] = new Spot(7, 6, blackPawn8);
 
-        for (int i = 2; i < 6; i++) {
-            for (int j = 0; j < 8; j++) {
+        for (int i = 0; i < 8; i++) {
+            for (int j = 2; j < 6; j++) {
                 boxes[i][j] = new Spot(i, j, null);
             }
         }
