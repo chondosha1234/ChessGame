@@ -43,8 +43,8 @@ public class King extends Piece {
             this.spot = end;
             return true;
         }
-
-        return this.isValidCastling(board, start, end);
+        return false;
+        //return this.isValidCastling(board, start, end);
     }
 
     private boolean isValidCastling(Board board, Spot start, Spot end) {
