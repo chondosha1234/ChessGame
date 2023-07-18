@@ -12,7 +12,7 @@ import players.HumanPlayer;
 import players.Player;
 
 public class ChessGui extends JFrame implements MouseListener, MouseMotionListener, ActionListener {
-    private final Game game;
+    private Game game;
     private final JPanel chessBoard;
     private JButton newGameButton;
     private JButton resetGameButton;
@@ -69,10 +69,7 @@ public class ChessGui extends JFrame implements MouseListener, MouseMotionListen
         chessBoard.setBounds(0, 0, boardSize.width, boardSize.height);
 
         // Add pieces to board
-        Player p1 = new HumanPlayer(true);
-        Player p2 = new HumanPlayer(false);
-        game = new Game(p1, p2);
-        setChessBoard();
+        resetGame();
 
         // right panel added to main for buttons and other info
         JPanel rightPanel = new JPanel(new GridLayout(3, 1));
@@ -127,13 +124,23 @@ public class ChessGui extends JFrame implements MouseListener, MouseMotionListen
         chessBoard.repaint();
     }
 
+    private void resetGame() {
+        Player p1 = new HumanPlayer(true);
+        Player p2 = new HumanPlayer(false);
+        this.game = new Game(p1, p2);
+        setChessBoard();
+        updateChessBoard();
+    }
+
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == newGameButton) {
             System.out.println("New Game pushed");
         } else if (e.getSource() == resetGameButton) {
             System.out.println("Reset Game pushed");
+            resetGame();
         } else if (e.getSource() == quitButton) {
             System.out.println("Quit game button pressed");
+            dispose();
         }
     }
 

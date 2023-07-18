@@ -4,35 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aa76f95b-1e9a-4131-b4d4-66ca48f3ed26" name="Changes" comment="temporarily removed castling check">
+    <list default="true" id="aa76f95b-1e9a-4131-b4d4-66ca48f3ed26" name="Changes" comment="added title to chess game.  Chessgui actionlistener and method">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/UI/ChessGui.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/UI/ChessGui.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gameboard/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gameboard/Board.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pieces/Pawn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pieces/Pawn.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/chess_pieces/bishop_black.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/chess_pieces/bishop_white.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/chess_pieces/bishop_white.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/chess_pieces/king_black.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/chess_pieces/king_black.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/chess_pieces/king_white.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/chess_pieces/king_white.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/chess_pieces/knight_black.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/chess_pieces/knight_black.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/chess_pieces/knight_white.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/chess_pieces/knight_white.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/chess_pieces/pawn_black.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/chess_pieces/pawn_black.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/chess_pieces/pawn_white.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/chess_pieces/pawn_white.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/chess_pieces/queen_black.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/chess_pieces/queen_black.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/chess_pieces/queen_white.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/chess_pieces/queen_white.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/chess_pieces/rook_black.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/chess_pieces/rook_black.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/chess_pieces/rook_white.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/chess_pieces/rook_white.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/chess_pieces_original/bishop_black.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/chess_pieces_original/bishop_black.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/chess_pieces_original/bishop_white.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/chess_pieces_original/bishop_white.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/chess_pieces_original/king_black.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/chess_pieces_original/king_black.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/chess_pieces_original/king_white.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/chess_pieces_original/king_white.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/chess_pieces_original/knight_black.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/chess_pieces_original/knight_black.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/chess_pieces_original/knight_white.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/chess_pieces_original/knight_white.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/chess_pieces_original/pawn_black.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/chess_pieces_original/pawn_black.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/chess_pieces_original/pawn_white.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/chess_pieces_original/pawn_white.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/chess_pieces_original/queen_black.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/chess_pieces_original/queen_black.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/chess_pieces_original/queen_white.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/chess_pieces_original/queen_white.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/chess_pieces_original/rook_black.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/chess_pieces_original/rook_black.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/chess_pieces_original/rook_white.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/chess_pieces_original/rook_white.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -273,7 +246,42 @@
       <option name="project" value="LOCAL" />
       <updated>1689226199740</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="fixed backgrounds of images">
+      <created>1689285585580</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1689285585580</updated>
+    </task>
+    <task id="LOCAL-00030" summary="fixed backgrounds of images">
+      <created>1689285597956</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1689285597956</updated>
+    </task>
+    <task id="LOCAL-00031" summary="changed board orientation to vertical, and fixed pawn class to work with new orientation">
+      <created>1689285622186</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1689285622186</updated>
+    </task>
+    <task id="LOCAL-00032" summary="added 1 space diagonal movement for king">
+      <created>1689285632526</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1689285632526</updated>
+    </task>
+    <task id="LOCAL-00033" summary="added title to chess game.  Chessgui actionlistener and method">
+      <created>1689638558524</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1689638558524</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -288,11 +296,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="created player class and human and computer sublcasses" />
-    <MESSAGE value="created game status enum and move class" />
-    <MESSAGE value="started working on individual pieces classes" />
-    <MESSAGE value="implemented canMove method for rook and bishop" />
-    <MESSAGE value="implemented queen moves method" />
     <MESSAGE value="implemented pawn moves method" />
     <MESSAGE value="created game and gui classes" />
     <MESSAGE value="added getCurrent Turn and getBoard methods" />
@@ -313,6 +316,11 @@
     <MESSAGE value="added evaluate check conditions methods. evaluateCurrentPlayerCheck works as expected" />
     <MESSAGE value="added to Spot constructor to set the piece's spot to object being created" />
     <MESSAGE value="temporarily removed castling check" />
-    <option name="LAST_COMMIT_MESSAGE" value="temporarily removed castling check" />
+    <MESSAGE value="fixed backgrounds of images" />
+    <MESSAGE value="changed board orientation to vertical, and fixed pawn class to work with new orientation" />
+    <MESSAGE value="added 1 space diagonal movement for king" />
+    <MESSAGE value="added other gui panels around the main chessboard" />
+    <MESSAGE value="added title to chess game.  Chessgui actionlistener and method" />
+    <option name="LAST_COMMIT_MESSAGE" value="added title to chess game.  Chessgui actionlistener and method" />
   </component>
 </project>
