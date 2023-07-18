@@ -11,9 +11,12 @@ import pieces.Piece;
 import players.HumanPlayer;
 import players.Player;
 
-public class ChessGui extends JFrame implements MouseListener, MouseMotionListener {
+public class ChessGui extends JFrame implements MouseListener, MouseMotionListener, ActionListener {
     private final Game game;
     private final JPanel chessBoard;
+    private JButton newGameButton;
+    private JButton resetGameButton;
+    private JButton quitButton;
     private JLabel chessPiece;
     private int xAdjustment;
     private int yAdjustment;
@@ -25,8 +28,35 @@ public class ChessGui extends JFrame implements MouseListener, MouseMotionListen
         Dimension boardSize = new Dimension(600, 600);
         squareSize = 600 / 8;
 
+        // main panel for whole app
+        JPanel mainPanel = new JPanel(new BorderLayout());
+        getContentPane().add(mainPanel);
+
+        // panel for board and margin panels
+        JPanel boardPanel = new JPanel(new BorderLayout());
+        mainPanel.add(boardPanel);
+
+        // top panel for showing letters along board
+        JPanel topPanel = new JPanel(new GridLayout(1, 8));
+        topPanel.setPreferredSize(new Dimension(600, 50));
+        for (char c = 'a'; c <= 'h'; c++) {
+            JLabel label = new JLabel(String.valueOf(c), SwingConstants.CENTER);
+            topPanel.add(label);
+        }
+        boardPanel.add(topPanel, BorderLayout.NORTH);
+
+        // left side panel to show numbers along board
+        JPanel leftPanel = new JPanel(new GridLayout(8, 1));
+        leftPanel.setPreferredSize(new Dimension(50, 600));
+        for (int i = 8; i >= 1; i--) {
+            JLabel label = new JLabel(String.valueOf(i), SwingConstants.CENTER);
+            leftPanel.add(label);
+        }
+        boardPanel.add(leftPanel, BorderLayout.WEST);
+
+        // panel for the chess board
         JLayeredPane layeredPane = new JLayeredPane();
-        getContentPane().add(layeredPane);
+        boardPanel.add(layeredPane, BorderLayout.CENTER);
         layeredPane.setPreferredSize(boardSize);
         layeredPane.addMouseListener(this);
         layeredPane.addMouseMotionListener(this);
@@ -43,9 +73,26 @@ public class ChessGui extends JFrame implements MouseListener, MouseMotionListen
         Player p2 = new HumanPlayer(false);
         game = new Game(p1, p2);
         setChessBoard();
+
+        // right panel added to main for buttons and other info
+        JPanel rightPanel = new JPanel(new GridLayout(3, 1));
+        newGameButton = new JButton("New Game");
+        resetGameButton = new JButton("Reset Game");
+        quitButton = new JButton("Quit");
+
+        newGameButton.addActionListener(this);
+        resetGameButton.addActionListener(this);
+        quitButton.addActionListener(this);
+
+        rightPanel.add(newGameButton);
+        rightPanel.add(resetGameButton);
+        rightPanel.add(quitButton);
+
+        mainPanel.add(rightPanel, BorderLayout.EAST);
     }
 
     private void setChessBoard() {
+
         for (int i = 0; i < 64; i++) {
             JPanel square = new JPanel(new BorderLayout());
             chessBoard.add(square);
@@ -62,6 +109,7 @@ public class ChessGui extends JFrame implements MouseListener, MouseMotionListen
             int y = i / 8;
             Spot spot = game.getBoard().getBox(x, y);
             Piece piece = spot.getPiece();
+
             if (piece != null) {
                 // Add jLabel with image for piece
                 String imagePath = piece.getImagePath();
@@ -77,6 +125,16 @@ public class ChessGui extends JFrame implements MouseListener, MouseMotionListen
         setChessBoard();
         chessBoard.revalidate();
         chessBoard.repaint();
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == newGameButton) {
+            System.out.println("New Game pushed");
+        } else if (e.getSource() == resetGameButton) {
+            System.out.println("Reset Game pushed");
+        } else if (e.getSource() == quitButton) {
+            System.out.println("Quit game button pressed");
+        }
     }
 
     // select piece
