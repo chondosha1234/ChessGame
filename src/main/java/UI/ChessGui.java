@@ -5,6 +5,8 @@ import java.awt.event.*;
 import java.awt.image.BufferedImage;
 import java.util.logging.Logger;
 import javax.swing.*;
+import javax.swing.border.Border;
+
 import game.Game;
 import gameboard.Spot;
 import pieces.Piece;
@@ -27,6 +29,7 @@ public class ChessGui extends JFrame implements MouseListener, MouseMotionListen
     public ChessGui() {
         Dimension boardSize = new Dimension(600, 600);
         squareSize = 600 / 8;
+        int marginSize = 20;
 
         // main panel for whole app
         JPanel mainPanel = new JPanel(new BorderLayout());
@@ -34,6 +37,8 @@ public class ChessGui extends JFrame implements MouseListener, MouseMotionListen
 
         // panel for board and margin panels
         JPanel boardPanel = new JPanel(new BorderLayout());
+        Border border = BorderFactory.createEmptyBorder(marginSize, marginSize, marginSize, marginSize);
+        boardPanel.setBorder(border);
         mainPanel.add(boardPanel);
 
         // top panel for showing letters along board
@@ -73,6 +78,8 @@ public class ChessGui extends JFrame implements MouseListener, MouseMotionListen
 
         // right panel added to main for buttons and other info
         JPanel rightPanel = new JPanel(new GridLayout(3, 1));
+        Border margin = BorderFactory.createEmptyBorder(50, 50, 50, 50);
+        rightPanel.setBorder(margin);
         newGameButton = new JButton("New Game");
         resetGameButton = new JButton("Reset Game");
         quitButton = new JButton("Quit");
