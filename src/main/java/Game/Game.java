@@ -60,6 +60,10 @@ public class Game {
         return this.status;
     }
 
+    public boolean getWhiteKingChecked() { return this.whiteKingChecked; }
+
+    public boolean getBlackKingChecked() { return this.blackKingChecked; }
+
     public void setStatus(GameStatus status) {
         this.status = status;
     }

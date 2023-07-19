@@ -16,9 +16,11 @@ import players.Player;
 public class ChessGui extends JFrame implements MouseListener, MouseMotionListener, ActionListener {
     private Game game;
     private final JPanel chessBoard;
-    private JButton newGameButton;
-    private JButton resetGameButton;
-    private JButton quitButton;
+    private final JButton newGameButton;
+    private final JButton resetGameButton;
+    private final JButton quitButton;
+    private final JLabel whiteCheckLabel;
+    private final JLabel blackCheckLabel;
     private JLabel chessPiece;
     private int xAdjustment;
     private int yAdjustment;
@@ -30,6 +32,7 @@ public class ChessGui extends JFrame implements MouseListener, MouseMotionListen
         Dimension boardSize = new Dimension(600, 600);
         squareSize = 600 / 8;
         int marginSize = 20;
+        Border border = BorderFactory.createEmptyBorder(marginSize, marginSize, marginSize, marginSize);
 
         // main panel for whole app
         JPanel mainPanel = new JPanel(new BorderLayout());
@@ -37,7 +40,6 @@ public class ChessGui extends JFrame implements MouseListener, MouseMotionListen
 
         // panel for board and margin panels
         JPanel boardPanel = new JPanel(new BorderLayout());
-        Border border = BorderFactory.createEmptyBorder(marginSize, marginSize, marginSize, marginSize);
         boardPanel.setBorder(border);
         mainPanel.add(boardPanel);
 
@@ -73,24 +75,38 @@ public class ChessGui extends JFrame implements MouseListener, MouseMotionListen
         chessBoard.setPreferredSize(boardSize);
         chessBoard.setBounds(0, 0, boardSize.width, boardSize.height);
 
-        // Add pieces to board
-        resetGame();
-
         // right panel added to main for buttons and other info
-        JPanel rightPanel = new JPanel(new GridLayout(3, 1));
-        Border margin = BorderFactory.createEmptyBorder(50, 50, 50, 50);
-        rightPanel.setBorder(margin);
+        JPanel rightPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 0, 20));
+        rightPanel.setBorder(border);
+        rightPanel.setPreferredSize(new Dimension(200, 600));
+
+        whiteCheckLabel = new JLabel("White King is in check!");
+        blackCheckLabel = new JLabel("Black King is in check!");
         newGameButton = new JButton("New Game");
         resetGameButton = new JButton("Reset Game");
         quitButton = new JButton("Quit");
+
+        Dimension buttonSize = new Dimension(150, 50);
+        newGameButton.setPreferredSize(buttonSize);
+        resetGameButton.setPreferredSize(buttonSize);
+        quitButton.setPreferredSize(buttonSize);
 
         newGameButton.addActionListener(this);
         resetGameButton.addActionListener(this);
         quitButton.addActionListener(this);
 
+        rightPanel.add(whiteCheckLabel);
+        rightPanel.add(blackCheckLabel);
         rightPanel.add(newGameButton);
         rightPanel.add(resetGameButton);
         rightPanel.add(quitButton);
+
+        // labels for check shouldn't be shown on initial board
+        whiteCheckLabel.setVisible(false);
+        blackCheckLabel.setVisible(false);
+
+        // Add pieces to board
+        resetGame();
 
         mainPanel.add(rightPanel, BorderLayout.EAST);
     }
@@ -127,6 +143,8 @@ public class ChessGui extends JFrame implements MouseListener, MouseMotionListen
     private void updateChessBoard() {
         chessBoard.removeAll();
         setChessBoard();
+        blackCheckLabel.setVisible(game.getBlackKingChecked());
+        whiteCheckLabel.setVisible(game.getWhiteKingChecked());
         chessBoard.revalidate();
         chessBoard.repaint();
     }
