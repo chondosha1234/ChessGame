@@ -35,6 +35,9 @@ public class Bishop extends Piece {
 
         int x = Math.abs(startX - endX);
         int y = Math.abs(startY - endY);
+        System.out.println("bishop abs X: " + x);
+        System.out.println("bishop abs Y: " + y);
+
 
         // must have difference in both x and y for a move.  must be an equal difference
         // 1 diagonal move is dx = 1, dy = 1,  2 diagonal spaces would be dx = 2,  dy = 2
@@ -42,7 +45,7 @@ public class Bishop extends Piece {
             return false;
         }
 
-        if (x / y == 1) {
+        if (x == y) {
             if (startX < endX && startY < endY) {
                 int i = startX + 1;
                 int j = startY + 1;

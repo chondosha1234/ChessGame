@@ -36,7 +36,7 @@ public class Queen extends Piece {
         int y = Math.abs(startY - endY);
 
         // diagonal line movement like bishop
-        if (y != 0 && x / y == 1) {
+        if (y != 0 && x == y) {
             if (startX < endX && startY < endY) {
                 int i = startX + 1;
                 int j = startY + 1;

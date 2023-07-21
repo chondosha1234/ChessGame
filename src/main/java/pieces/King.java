@@ -44,10 +44,8 @@ public class King extends Piece {
         int actualX = end.getX() - start.getX();
 
         // castling situation
-        System.out.println("king move coordinates: " + actualX + " " + y);
         if (actualX == 1 && y == 0 && this.firstMove) {
             // check to make sure knight isn't there
-            System.out.println("inside castling move code");
             Spot knightSpot = board.getBox(end.getX() + 1, end.getY());
             if (knightSpot.getPiece() != null) {
                 return false;
@@ -56,8 +54,6 @@ public class King extends Piece {
             this.spot = rookSpot;
             return true;
         }
-
-        System.out.println("passed castling move code");
 
         if (x + y == 1) {
             //check to make sure it will not result in king getting attacked
