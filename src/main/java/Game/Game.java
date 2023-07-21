@@ -5,6 +5,7 @@ import gameboard.Move;
 import gameboard.Spot;
 import pieces.King;
 import pieces.Piece;
+import pieces.Rook;
 import players.Player;
 
 import java.util.ArrayList;
@@ -91,7 +92,6 @@ public class Game {
         if (sourcePiece.isWhite() != player.isWhiteSide()) {
             return false;
         }
-
         // check valid move
         if (!sourcePiece.canMove(board, move.getStart(), move.getEnd())) {
             return false;
@@ -106,21 +106,43 @@ public class Game {
 
         // check if castling move
         if (sourcePiece instanceof King && sourcePiece.isCastlingMove(move.getStart(), move.getEnd())) {
+            System.out.println("inside game class castling code");
             move.setCastlingMove(true);
+            Spot rookSpot = board.getBox(move.getEnd().getX() + 2, move.getEnd().getY());
+            System.out.println("rook spot coordinates: " + rookSpot.getX() + " " + rookSpot.getY());
+            if (rookSpot.getPiece() != null && (rookSpot.getPiece() instanceof Rook)) {
+                Rook rook = (Rook) rookSpot.getPiece();
+                System.out.println("rook object: " + rook);
+                rookSpot.setPiece(sourcePiece);
+                move.getEnd().setPiece(rook);
+                move.getStart().setPiece(null);
+                rook.castlingMove(move.getEnd());
+                if (evaluateCurrentPlayerCheck()) {
+                    // switch piece back
+                    move.getStart().setPiece(sourcePiece);
+                    rookSpot.setPiece(rook);
+                    rook.castlingMove(rookSpot);
+                    return false;
+                }
+                // set castling done which sets King firstMove to false after all this is completed
+                ((King) sourcePiece).setCastlingDone(true);
+            }
         }
 
         //store the move
         movesPlayed.add(move);
 
         //move piece from start box to end box
-        move.getEnd().setPiece(sourcePiece);
-        move.getStart().setPiece(null);
-        // evaluate check condition for current player, if true revert move and return false
-        if (evaluateCurrentPlayerCheck()) {
-            // switch piece back
-            move.getStart().setPiece(sourcePiece);
-            move.getEnd().setPiece(null);
-            return false;
+        if (!move.isCastlingMove()) {
+            move.getEnd().setPiece(sourcePiece);
+            move.getStart().setPiece(null);
+            // evaluate check condition for current player, if true revert move and return false
+            if (evaluateCurrentPlayerCheck()) {
+                // switch piece back
+                move.getStart().setPiece(sourcePiece);
+                move.getEnd().setPiece(null);
+                return false;
+            }
         }
 
         // see if current player put enemy in check after move has been completed

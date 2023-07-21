@@ -207,9 +207,11 @@ public class ChessGui extends JFrame implements MouseListener, MouseMotionListen
         //get destination spot
         Spot endSpot = game.getBoard().getBox(x, y);
 
-        System.out.println("start spot : " + startSpot);
-        System.out.println("end spot : " + endSpot);
-        System.out.println("piece : " + selectedPiece);
+        //System.out.println("start spot : " + startSpot);
+        //System.out.println("end spot : " + endSpot);
+        //System.out.println("piece : " + selectedPiece);
+        //System.out.println("start coordinates: " + this.xStart + " " + this.yStart);
+        //System.out.println("end coordinates: " + endSpot.getX() + " " + endSpot.getY());
 
         boolean isValidMove = game.playerMove(game.getCurrentTurn(), xStart, yStart, x, y);
         if (isValidMove) {

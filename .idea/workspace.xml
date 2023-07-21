@@ -4,8 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aa76f95b-1e9a-4131-b4d4-66ca48f3ed26" name="Changes" comment="added close on quit button and reset game method for reset button">
-      <change beforePath="$PROJECT_DIR$/src/main/java/ui/ChessGui.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/ChessGui.java" afterDir="false" />
+    <list default="true" id="aa76f95b-1e9a-4131-b4d4-66ca48f3ed26" name="Changes" comment="fixed border and button sizes.  added labels to show when kings are in check">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pieces/King.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pieces/King.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pieces/Rook.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pieces/Rook.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -288,7 +290,21 @@
       <option name="project" value="LOCAL" />
       <updated>1689638826618</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="added border to gui">
+      <created>1689732535592</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1689732535592</updated>
+    </task>
+    <task id="LOCAL-00036" summary="fixed border and button sizes.  added labels to show when kings are in check">
+      <created>1689801063754</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1689801063754</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -303,8 +319,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="created game and gui classes" />
-    <MESSAGE value="added getCurrent Turn and getBoard methods" />
     <MESSAGE value="added imagePath variable, set in constructor and getimagepath method" />
     <MESSAGE value="added abstract get image path method" />
     <MESSAGE value="renamed packages" />
@@ -328,6 +342,8 @@
     <MESSAGE value="added other gui panels around the main chessboard" />
     <MESSAGE value="added title to chess game.  Chessgui actionlistener and method" />
     <MESSAGE value="added close on quit button and reset game method for reset button" />
-    <option name="LAST_COMMIT_MESSAGE" value="added close on quit button and reset game method for reset button" />
+    <MESSAGE value="added border to gui" />
+    <MESSAGE value="fixed border and button sizes.  added labels to show when kings are in check" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed border and button sizes.  added labels to show when kings are in check" />
   </component>
 </project>

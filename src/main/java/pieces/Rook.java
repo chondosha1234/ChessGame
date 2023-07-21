@@ -83,4 +83,8 @@ public class Rook extends Piece {
         // didn't meet valid move criteria
         return false;
     }
+
+    public void castlingMove(Spot spot) {
+        this.spot = spot;
+    }
 }
